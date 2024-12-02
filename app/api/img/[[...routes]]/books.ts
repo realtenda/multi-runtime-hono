@@ -6,8 +6,16 @@ export const runtime = "nodejs";
 
 const app = new Hono();
 
-app.get("/", async (c) => c.newResponse((await pictureFetcher()).body));
+app.get("/", async (c) =>
+  c.newResponse(await (await pictureFetcher()).arrayBuffer())
+);
 app.post("/", (c) => c.json("create a book", 201));
-app.get("/:id", async (c) => c.newResponse(await fun()));
-
+app.get("/:id", async () => {
+  const buffer = await fun();
+  return new Response(buffer, {
+    headers: {
+      "Content-Type": "image/jpeg",
+    },
+  });
+});
 export default app;
