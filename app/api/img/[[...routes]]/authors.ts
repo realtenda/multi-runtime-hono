@@ -1,7 +1,7 @@
 // authors.ts
 import { Hono } from "hono";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 const app = new Hono();
 

@@ -1,6 +1,6 @@
 import sharp from "sharp";
 
-const pictureFetcher = async () => {
+export const pictureFetcher = async () => {
   const picture = await fetch("https://picsum.photos/200/300");
 
   return picture;
