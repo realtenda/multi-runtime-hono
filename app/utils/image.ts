@@ -16,3 +16,16 @@ export const fun = async () => {
   //testing 1 2
   return await imgBuffer;
 };
+
+export const processImg = async (imgUrl: string) => {
+  const picture = (await fetch(imgUrl)).arrayBuffer();
+
+  // const img = await (await pictureFetcher()).arrayBuffer();
+
+  const imgBuffer = sharp(await picture)
+    .rotate(40)
+    .toBuffer();
+
+  //testing 1 2
+  return await imgBuffer;
+};
